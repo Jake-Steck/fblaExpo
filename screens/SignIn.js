@@ -27,7 +27,7 @@ export default function SignIn({ navigation }) {
 
     return (
         <View>
-            <Button title="Sign In" onPress={signIn} st />
+            <Button title="Sign In" onPress={signIn} />
             <TextInput
                 style={tw`pl-4 h-12 w-80 border-black border-2 rounded-xl`}
                 placeholder="Email"
@@ -40,8 +40,7 @@ export default function SignIn({ navigation }) {
                 value={password}
                 secureTextEntry={true}
             />
-            <Button title="Second" onPress={() => navigation.navigate('Home')}
-                st />
+            <Button title="Second" onPress={() => navigation.navigate('Home')} />
 
 
         </View>

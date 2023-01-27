@@ -4,7 +4,8 @@ import Home from './screens/Home';
 import SignIn from './screens/SignIn';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import { StatusBar } from 'expo-status-bar';
+import BottomBar from './components/BottomBar';
 const Stack = createNativeStackNavigator();
 
 // Font Imports
@@ -53,25 +54,10 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="HomeScreen"
-          component={Home}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SignInScreen"
-          component={SignIn}
-          options={{ headerShown: false }}
-        />
-
-      </Stack.Navigator>
+      <BottomBar />
     </NavigationContainer>
 
-    // <View style={styles.container}>
-    //   {/* <Text style={{ fontFamily: 'OpenSans_300Light' }}>Open Sans 300 Light</Text> */}
-    //   <Home />
-    // </View>
+
   );
 }
 
