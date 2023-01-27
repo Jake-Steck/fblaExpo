@@ -15,6 +15,7 @@ export default function SignIn({ navigation }) {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
+                navigation.navigate("Home");
                 console.log(user);
             })
             .catch((error) => {
@@ -26,23 +27,32 @@ export default function SignIn({ navigation }) {
     }
 
     return (
-        <View>
-            <Button title="Sign In" onPress={signIn} />
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <TextInput
-                style={tw`pl-4 h-12 w-80 border-black border-2 rounded-xl`}
+                style={tw`pl-4 h-12 w-80 rounded-xl bg-white`}
                 placeholder="Email"
                 onChangeText={text => setEmail(text)}
                 value={email}
             />
             <TextInput
-                style={tw`mt-4 pl-4 h-12 w-80 border-black  border-2 rounded-xl`} placeholder="Password"
+                style={tw`mt-4 pl-4 h-12 w-80 rounded-xl bg-white`} placeholder="Password"
                 onChangeText={text => setPassword(text)}
                 value={password}
                 secureTextEntry={true}
             />
-            <Button title="Second" onPress={() => navigation.navigate('Home')} />
+            <Button title="Sign In" onPress={signIn} />
 
 
-        </View>
+        </View >
     );
 }
+
+
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         backgroundColor: '#F3F3F3',
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//     },
+// });
