@@ -5,7 +5,7 @@ import tw from 'tailwind-react-native-classnames';
 export default function Header() {
     return (
         <>
-            <Text style={tw`text-xl absolute`}>Important Events</Text>
+            <Text style={tw`text-xl`}>Important Events</Text>
         </>
     )
 }

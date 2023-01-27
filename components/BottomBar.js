@@ -9,7 +9,8 @@ export default function BottomNav() {
     return (
         <Tab.Navigator>
             <Tab.Screen name="Home" component={Home} options={{ headerShown: false }} />
-            <Tab.Screen name="Profile" component={SignIn} />
+            <Tab.Screen name="Profile" component={SignIn} options={{ headerShown: false }} />
         </Tab.Navigator>
     );
 }
+

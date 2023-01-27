@@ -55,9 +55,13 @@ export default function App() {
   return (
     <NavigationContainer>
       <BottomBar />
+
     </NavigationContainer>
 
-
+    // <View style={styles.container}>
+    //   {/* <Text style={{ fontFamily: 'OpenSans_300Light' }}>Open Sans 300 Light</Text> */}
+    //   <Home />
+    // </View>
   );
 }
 
