@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import BottomBar from './components/BottomBar';
-const Stack = createNativeStackNavigator();
+import StackNav from './components/StackNav';
 
 // Font Imports
 import {
@@ -28,6 +28,7 @@ import {
   OpenSansCondensed_300Light_Italic,
   OpenSansCondensed_700Bold,
 } from '@expo-google-fonts/open-sans-condensed';
+import ResetPassword from './screens/ForgetPassword';
 
 
 // Main App Function
@@ -54,9 +55,9 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <BottomBar />
-
+      <StackNav />
     </NavigationContainer>
+
 
     // <View style={styles.container}>
     //   {/* <Text style={{ fontFamily: 'OpenSans_300Light' }}>Open Sans 300 Light</Text> */}
