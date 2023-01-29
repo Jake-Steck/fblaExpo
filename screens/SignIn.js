@@ -6,6 +6,8 @@ import { auth } from "../firebaseConfig";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import SignInHeader from '../components/SignInHeader';
+
 
 export default function SignIn({ navigation }) {
 
@@ -44,34 +46,25 @@ export default function SignIn({ navigation }) {
     };
 
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <TextInput
-                style={tw`pl-4 h-12 w-80 rounded-xl bg-white`}
-                placeholder="Email"
-                onChangeText={text => setEmail(text)}
-                value={email}
-            />
-            <TextInput
-                style={tw`mt-4 pl-4 h-12 w-80 rounded-xl bg-white`} placeholder="Password"
-                onChangeText={text => setPassword(text)}
-                value={password}
-                secureTextEntry={true}
-            />
-            <Button title="Sign In" onPress={signIn} />
-            <Button title="Register" onPress={Register} />
-            <Button title="Forgot Password" onPress={() => navigation.navigate("ResetPassword")} />
-
-
-        </View >
+        <>
+            <SignInHeader />
+            <View style={{ flex: 1, alignItems: 'center', marginTop: '30%', paddingTop: 10 }}>
+                <TextInput
+                    style={tw`pl-4 h-12 w-80 rounded-xl bg-white`}
+                    placeholder="Email"
+                    onChangeText={text => setEmail(text)}
+                    value={email}
+                />
+                <View style={{ padding: 25 }}>
+                    <TextInput
+                        style={tw`mt-4 pl-4 h-12 w-80   rounded-xl bg-white`} placeholder="Password"
+                        onChangeText={text => setPassword(text)}
+                        value={password}
+                        secureTextEntry={true}
+                    />
+                    <Button title="Sign In" onPress={signIn} />
+                </View>
+            </View >
+        </>
     );
 }
-
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         backgroundColor: '#F3F3F3',
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//     },
-// });
