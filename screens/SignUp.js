@@ -1,19 +1,18 @@
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import SignUpHeader from '../components/SignUpHeader';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 
-import SignInHeader from '../components/SignInHeader';
 
-
-export default function SignIn({ navigation }) {
+export default function SignUp({ navigation }) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    let signIn = () => {
-        signInWithEmailAndPassword(auth, email, password)
+    let signUp = () => {
+        createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
                 navigation.navigate("Home");
@@ -24,14 +23,13 @@ export default function SignIn({ navigation }) {
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage);
                 alert(errorMessage);
-            });
-    }
-
-
+            }
+            )
+    };
 
     return (
         <>
-            <SignInHeader />
+            <SignUpHeader />
             <View style={{ flex: 1, alignItems: 'center', marginTop: '30%', paddingTop: 10 }}>
                 <TextInput
                     style={tw`pl-4 h-12 w-80 rounded-xl bg-white`}
@@ -46,8 +44,7 @@ export default function SignIn({ navigation }) {
                         value={password}
                         secureTextEntry={true}
                     />
-                    <Button title="Sign In" onPress={signIn} />
-                    <Button title="Sign Up" onPress={() => navigation.navigate("SignUp")} />
+                    <Button title="Register" onPress={signUp} />
                 </View>
             </View >
         </>
