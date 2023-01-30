@@ -5,7 +5,7 @@ import ImpEvents from '../components/ImpEvents';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-export default function Home({ navigation }) {
+export default function Home() {
     return (
         <>
             <HomeHeader />

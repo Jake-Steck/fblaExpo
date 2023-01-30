@@ -17,12 +17,25 @@ export default function ResetPassword({ navigation }) {
     const handleResetPassword = () => {
         sendPasswordResetEmail(auth, email)
             .then(() => {
+                alert('Password reset email sent. Please check your inbox.');
                 navigation.navigate('Profile');
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                switch (errorCode) {
+                    case 'auth/invalid-email':
+                        alert('The Email Adress that was entered was not found/invalid. Please try again.');
+                        break;
+                    case 'auth/user-not-found':
+                        alert('User not found.');
+                        break;
+                    case 'auth/missing-email':
+                        alert('Please enter your email address.');
+                        break;
+                }
             });
+
     };
 
     return (
@@ -36,9 +49,20 @@ export default function ResetPassword({ navigation }) {
                         placeholder="Email"
                         onChangeText={text => setEmail(text)}
                         value={email}
+                        clearButtonMode="always"
                     />
                 </View>
-                <Pressable onPress={() => handleResetPassword} style={{ backgroundColor: "#6DC590", height: 45, width: 360, justifyContent: 'center', alignItems: 'center', borderRadius: 10, marginTop: 50 }}>
+                {/* <Pressable onPress={handleResetPassword} style={{ backgroundColor: "#6DC590", height: 45, width: 360, justifyContent: 'center', alignItems: 'center', borderRadius: 10, marginTop: 50 }}>
+                    <Text style={{ fontFamily: "OpenSans_600SemiBold", fontSize: 20, color: 'white' }}>Reset Password</Text>
+                </Pressable> */}
+                <Pressable onPress={handleResetPassword} style={({ pressed }) => [
+                    {
+                        backgroundColor: pressed
+                            ? '#34AE65'
+                            : '#6DC590'
+                    },
+                    styles.notPressed
+                ]}>
                     <Text style={{ fontFamily: "OpenSans_600SemiBold", fontSize: 20, color: 'white' }}>Reset Password</Text>
                 </Pressable>
             </View>
@@ -67,5 +91,13 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         paddingLeft: 10,
     },
+    notPressed: {
+        height: 45,
+        width: 360,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        marginTop: 50
+    }
 });
 

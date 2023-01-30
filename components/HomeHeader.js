@@ -28,12 +28,11 @@ export default function Header() {
     return (
         <>
             <Image source={require('../assets/imgs/header.png')} style={tw`absolute w-full top-0 h-96 z-0 `} />
-            {/* <Text style={{ fontFamily: 'OpenSans_700Bold', fontSize: 32 }}>Good {timeOfDay}</Text> */}
-            <Text style={tw`text-xl absolute top-28 left-10`}>Good {timeOfDay}</Text>
+            <Text style={{ fontFamily: 'OpenSans_700Bold', position: 'absolute', top: 112, left: 40, fontSize: 30, color: '#3D3D3D' }}>Good {timeOfDay}</Text>
             <Image source={require('../assets/imgs/marker.png')} style={tw`absolute top-40 left-10 w-6 h-6`} />
-            <Text style={tw`text-xl absolute top-40 left-16`}>Livingston High School</Text>
+            <Text style={{ fontFamily: 'OpenSans_300Light', position: 'absolute', top: 156, left: 70, fontSize: 20, color: '#3D3D3D' }}>Livingston High School</Text>
             <Image source={require('../assets/imgs/sun.png')} style={tw`absolute top-48 left-10 w-6 h-6`} />
-            <Text style={tw`text-xl absolute top-48 left-16`}>{temp}°F</Text>
+            <Text style={{ fontFamily: 'OpenSans_300Light', position: 'absolute', top: 192, left: 70, fontSize: 20, color: '#3D3D3D' }}>{temp}°F</Text>
         </>
     )
 }

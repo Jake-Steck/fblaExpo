@@ -25,9 +25,17 @@ export default function SignUp({ navigation }) {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage);
-                alert(errorMessage);
-            }
-            )
+                switch (errorCode) {
+                    case "auth/email-already-in-use":
+                        alert("Email already in use");
+                        break;
+                    case "auth/invalid-email":
+                        alert("Please Enter a valid email address");
+                        break;
+                    case "auth/internal-error":
+                        alert("Please enter a valid password");
+                }
+            });
     };
 
     return (
@@ -41,6 +49,7 @@ export default function SignUp({ navigation }) {
                         placeholder="Email"
                         onChangeText={text => setEmail(text)}
                         value={email}
+                        clearButtonMode="always"
                     />
                 </View>
                 <View style={{ padding: 25 }}>
@@ -52,27 +61,20 @@ export default function SignUp({ navigation }) {
                             onChangeText={text => setPassword(text)}
                             value={password}
                             secureTextEntry={true}
+                            clearButtonMode="always"
                         />
                     </View>
                 </View>
-                <Pressable onPress={signUp} style={{ backgroundColor: "#6DC590", height: 45, width: 360, justifyContent: 'center', alignItems: 'center', borderRadius: 10, marginTop: 50 }}>
+                <Pressable onPress={signUp} style={({ pressed }) => [
+                    {
+                        backgroundColor: pressed
+                            ? '#34AE65'
+                            : '#64DA93'
+                    },
+                    styles.notPressed
+                ]}>
                     <Text style={{ fontFamily: "OpenSans_600SemiBold", fontSize: 20, color: 'white' }}>Register</Text>
                 </Pressable>
-                {/* <TextInput
-                    style={tw`pl-4 h-12 w-80 rounded-xl bg-white`}
-                    placeholder="Email"
-                    onChangeText={text => setEmail(text)}
-                    value={email}
-                />
-                <View style={{ padding: 25 }}>
-                    <TextInput
-                        style={tw`mt-4 pl-4 h-12 w-80   rounded-xl bg-white`} placeholder="Password"
-                        onChangeText={text => setPassword(text)}
-                        value={password}
-                        secureTextEntry={true}
-                    />
-                    <Button title="Register" onPress={signUp} />
-                </View> */}
             </View >
         </>
     );
@@ -100,5 +102,13 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         paddingLeft: 10,
     },
+    notPressed: {
+        height: 45,
+        width: 360,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        marginTop: 50
+    }
 });
 

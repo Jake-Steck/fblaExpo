@@ -25,7 +25,20 @@ export default function SignIn({ navigation }) {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage);
-                alert(errorMessage);
+                switch (errorCode) {
+                    case "auth/invalid-email":
+                        alert("Please Enter a valid email address");
+                        break;
+                    case "auth/user-not-found":
+                        alert("User not found");
+                        break;
+                    case "auth/wrong-password":
+                        alert("Incorrect Password. Try again.");
+                        break;
+                    case "auth/internal-error":
+                        alert("Please enter a valid password");
+                        break;
+                }
             });
     }
 
@@ -42,6 +55,8 @@ export default function SignIn({ navigation }) {
                         placeholder="Email"
                         onChangeText={text => setEmail(text)}
                         value={email}
+                        clearButtonMode="always"
+
                     />
                 </View>
                 <View style={{ padding: 25 }}>
@@ -53,6 +68,7 @@ export default function SignIn({ navigation }) {
                             onChangeText={text => setPassword(text)}
                             value={password}
                             secureTextEntry={true}
+                            clearButtonMode="always"
                         />
                     </View>
                 </View>
@@ -60,13 +76,21 @@ export default function SignIn({ navigation }) {
                     <Text style={{ color: '#cdcdcd' }}>Forgot Password?</Text>
                 </Pressable>
 
-                <Pressable onPress={signIn} style={{ backgroundColor: "#6DC590", height: 45, width: 360, justifyContent: 'center', alignItems: 'center', borderRadius: 10, marginTop: 50 }}>
+                <Pressable onPress={signIn} style={({ pressed }) => [
+                    {
+                        backgroundColor: pressed
+                            ? '#34AE65'
+                            : '#64DA93'
+                    },
+                    styles.notPressed,
+                ]}>
                     <Text style={{ fontFamily: "OpenSans_600SemiBold", fontSize: 20, color: 'white' }}>Log In</Text>
                 </Pressable>
 
                 <Pressable onPress={() => navigation.navigate("SignUp")}>
                     <Text style={{ flex: 1, color: '#cdcdcd', marginTop: 20, flexDirection: 'row' }}>Don't have and account?<Text style={{ color: 'grey' }}> Sign Up</Text></Text>
                 </Pressable>
+
             </View >
         </>
     );
@@ -92,5 +116,13 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         paddingLeft: 10,
     },
+    notPressed: {
+        height: 45,
+        width: 360,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        marginTop: 50
+    }
 });
 
