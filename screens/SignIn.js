@@ -6,7 +6,6 @@ import { auth } from "../firebaseConfig";
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 
-
 import SignInHeader from '../components/SignInHeader';
 
 

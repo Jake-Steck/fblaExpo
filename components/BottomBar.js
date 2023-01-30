@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import Home from '../screens/Home';
 import SignIn from '../screens/SignIn';
+import SignUp from '../screens/SignUp';
 import { createStackNavigator } from '@react-navigation/stack';
 import ResetPassword from '../screens/ForgetPassword';
 import { NavigationContainer } from '@react-navigation/native';
@@ -12,7 +13,7 @@ import StackNav from './StackNav';
 
 const Tab = createBottomTabNavigator();
 
-export default function BottomNav( Screen ) {
+export default function BottomNav(Screen) {
     return (
         <Tab.Navigator>
             <Tab.Screen name="Home" component={Home} options={{ headerShown: false, tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="home" color={color} size={size} /> }} />
