@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 import { auth } from "../firebaseConfig";
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export default function SignUp({ navigation }) {
 
