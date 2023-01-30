@@ -5,8 +5,8 @@ import SignIn from './screens/SignIn';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
-import BottomBar from './components/BottomBar';
 import StackNav from './components/StackNav';
+import BottomNav from './components/BottomBar';
 
 // Font Imports
 import {

@@ -6,6 +6,8 @@ import tw from 'tailwind-react-native-classnames';
 import { auth } from "../firebaseConfig";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import BackButton from '../components/BackButton';
+import BottomNav from '../components/BottomBar';
 
 export default function SignUp({ navigation }) {
 
@@ -47,6 +49,8 @@ export default function SignUp({ navigation }) {
                     />
                     <Button title="Register" onPress={signUp} />
                 </View>
+                <BackButton onPress={() => navigation.navigate("Home")} />
+                <BottomNav />
             </View >
         </>
     );
