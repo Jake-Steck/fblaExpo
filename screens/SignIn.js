@@ -61,8 +61,8 @@ export default function SignIn({ navigation }) {
                     <Text style={{ color: '#cdcdcd' }}>Forgot Password?</Text>
                 </Pressable>
 
-                <Pressable onPress={signIn} style={{ backgroundColor: "#A1F6C3", height: 45, width: 360, justifyContent: 'center', alignItems: 'center', borderRadius: 10, marginTop: 50 }}>
-                    <Text style={{ fontFamily: "OpenSans_600SemiBold", fontSize: 20, color: '#cdcdcd' }}>Log In</Text>
+                <Pressable onPress={signIn} style={{ backgroundColor: "#6DC590", height: 45, width: 360, justifyContent: 'center', alignItems: 'center', borderRadius: 10, marginTop: 50 }}>
+                    <Text style={{ fontFamily: "OpenSans_600SemiBold", fontSize: 20, color: 'white' }}>Log In</Text>
                 </Pressable>
 
                 <Pressable onPress={() => navigation.navigate("SignUp")}>
