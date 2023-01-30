@@ -1,14 +1,10 @@
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, Pressable } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebaseConfig";
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { createStackNavigator } from "@react-navigation/stack";
-import BottomNav from "../components/BottomBar";
+import ForgetPasswordHeader from '../components/ForgotPasswordHeader';
+import { Ionicons } from '@expo/vector-icons';
 
 
 const Stack = createStackNavigator();
@@ -21,36 +17,55 @@ export default function ResetPassword({ navigation }) {
     const handleResetPassword = () => {
         sendPasswordResetEmail(auth, email)
             .then(() => {
-                // Password reset email sent!
-                // ..
                 navigation.navigate('Profile');
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                // ..
             });
     };
 
-    function BottomNav() {
-        return (
-            <Tab.Navigator>
-                <Tab.Screen name="Home" component={Home} options={{ headerShown: false }} />
-                <Tab.Screen name="Profile" component={SignIn} options={{ headerShown: false }} />
-            </Tab.Navigator>
-        );
-    }
-
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', BottomNav}}>
-            <TextInput
-                style={tw`pl-4 h-12 w-80 rounded-xl bg-white`}
-                placeholder="Email"
-                onChangeText={text => setEmail(text)}
-                value={email}
-            />
-            <Button title="Reset Password" onPress={handleResetPassword} />
+        <>
+            <ForgetPasswordHeader />
+            <View style={{ alignItems: 'center', marginTop: '25%', paddingTop: 10 }}>
+                <View style={styles.searchSection}>
+                    <Ionicons name="mail-outline" size={20} color="black" style={styles.searchIcon} />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Email"
+                        onChangeText={text => setEmail(text)}
+                        value={email}
+                    />
+                </View>
+                <Pressable onPress={() => handleResetPassword} style={{ backgroundColor: "#6DC590", height: 45, width: 360, justifyContent: 'center', alignItems: 'center', borderRadius: 10, marginTop: 50 }}>
+                    <Text style={{ fontFamily: "OpenSans_600SemiBold", fontSize: 20, color: 'white' }}>Reset Password</Text>
+                </Pressable>
+            </View>
 
-        </View >
+        </>
     );
 }
+
+const styles = StyleSheet.create({
+    searchSection: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: 360,
+        height: 45,
+        borderBottomColor: '#64DA93',
+        borderBottomWidth: 2,
+    },
+    searchIcon: {
+        padding: 1,
+
+    },
+    input: {
+        flex: 1,
+        paddingTop: 10,
+        paddingRight: 10,
+        paddingBottom: 10,
+        paddingLeft: 10,
+    },
+});
+
