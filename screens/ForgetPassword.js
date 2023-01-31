@@ -52,9 +52,6 @@ export default function ResetPassword({ navigation }) {
                         clearButtonMode="always"
                     />
                 </View>
-                {/* <Pressable onPress={handleResetPassword} style={{ backgroundColor: "#6DC590", height: 45, width: 360, justifyContent: 'center', alignItems: 'center', borderRadius: 10, marginTop: 50 }}>
-                    <Text style={{ fontFamily: "OpenSans_600SemiBold", fontSize: 20, color: 'white' }}>Reset Password</Text>
-                </Pressable> */}
                 <Pressable onPress={handleResetPassword} style={({ pressed }) => [
                     {
                         backgroundColor: pressed
