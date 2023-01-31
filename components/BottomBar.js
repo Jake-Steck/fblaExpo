@@ -13,7 +13,7 @@ import StackNav from './StackNav';
 
 const Tab = createBottomTabNavigator();
 
-export default function BottomNav(Screen) {
+export default function BottomNav() {
     return (
         <Tab.Navigator>
             <Tab.Screen name="Home" component={Home} options={{ headerShown: false, tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="home" color={color} size={size} /> }} />
