@@ -55,54 +55,56 @@ export default function ImpEvents() {
             </Modal>
 
             <Text style={{ left: 40, fontFamily: 'OpenSans_700Bold', marginTop: '70%', fontSize: 25, color: "#3D3D3D" }}>Important Information</Text>
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ paddingTop: 7, paddingLeft: 40 }} snapToInterval={370} decelerationRate={0}>
-                <Pressable onPress={() => setModalVisible1(true)} style={({ pressed }) => [
-                    {
-                        opacity: pressed
-                            ? '0.5'
-                            : '1'
-                    },
-                ]}>
-                    <Image
-                        source={{
-                            uri: slides[0]
-                        }}
-                        style={{ width: 350, height: 175, borderRadius: 10 }}
-                    />
-                </Pressable>
-                <Pressable onPress={() => setModalVisible2(true)} style={({ pressed }) => [
-                    {
-                        opacity: pressed
-                            ? '0.5'
-                            : '1'
-                    },
-                ]}>
-                    <Image
-                        source={{
-                            uri: slides[1]
-                        }}
-                        style={{ width: 350, height: 175, borderRadius: 10, marginLeft: 20 }}
-                    />
-                </Pressable>
-                <Pressable onPress={() => setModalVisible3(true)} style={({ pressed }) => [
-                    {
-                        opacity: pressed
-                            ? '0.5'
-                            : '1'
-                    },
-                ]}>
-                    <Image
-                        source={{
-                            uri: slides[2]
-                        }}
-                        style={{ width: 350, height: 175, borderRadius: 10, marginLeft: 20 }}
-                    />
-                </Pressable>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ paddingTop: 7, paddingLeft: 40 }} snapToInterval={370} decelerationRate={0}>
+                    <Pressable onPress={() => setModalVisible1(true)} style={({ pressed }) => [
+                        {
+                            opacity: pressed
+                                ? '0.5'
+                                : '1'
+                        },
+                    ]}>
+                        <Image
+                            source={{
+                                uri: slides[0]
+                            }}
+                            style={{ width: 350, height: 175, borderRadius: 10 }}
+                        />
+                    </Pressable>
+                    <Pressable onPress={() => setModalVisible2(true)} style={({ pressed }) => [
+                        {
+                            opacity: pressed
+                                ? '0.5'
+                                : '1'
+                        },
+                    ]}>
+                        <Image
+                            source={{
+                                uri: slides[1]
+                            }}
+                            style={{ width: 350, height: 175, borderRadius: 10, marginLeft: 20 }}
+                        />
+                    </Pressable>
+                    <Pressable onPress={() => setModalVisible3(true)} style={({ pressed }) => [
+                        {
+                            opacity: pressed
+                                ? '0.5'
+                                : '1'
+                        },
+                    ]}>
+                        <Image
+                            source={{
+                                uri: slides[2]
+                            }}
+                            style={{ width: 350, height: 175, borderRadius: 10, marginLeft: 20 }}
+                        />
+                    </Pressable>
 
-                <View
-                    style={{ width: 50, height: 175, borderRadius: 10, marginLeft: 20 }}
-                />
-            </ScrollView >
+                    <View
+                        style={{ width: 50, height: 175, borderRadius: 10, marginLeft: 20 }}
+                    />
+                </ScrollView >
+            </View>
         </>
     )
 }
