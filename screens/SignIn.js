@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, Pressable, } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, Pressable } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebaseConfig";
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { auth, provider } from "../firebaseConfig";
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+
 
 import SignInHeader from '../components/SignInHeader';
 
@@ -13,6 +14,26 @@ export default function SignIn({ navigation }) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+
+    let signInWithGoogle = () => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                const user = result.user;
+                navigation.navigate("Home");
+                console.log(user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                const email = error.customData.email;
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                console.log(errorCode, errorMessage, email, credential);
+            });
+    }
+
 
     let signIn = () => {
         signInWithEmailAndPassword(auth, email, password)
@@ -85,6 +106,17 @@ export default function SignIn({ navigation }) {
                     styles.notPressed,
                 ]}>
                     <Text style={{ fontFamily: "OpenSans_600SemiBold", fontSize: 20, color: 'white' }}>Log In</Text>
+                </Pressable>
+
+                <Pressable onPress={signInWithGoogle} style={({ pressed }) => [
+                    {
+                        backgroundColor: pressed
+                            ? '#34AE65'
+                            : '#64DA93'
+                    },
+                    styles.notPressed,
+                ]}>
+                    <Text style={{ fontFamily: "OpenSans_600SemiBold", fontSize: 20, color: 'white' }}>Log In with Google</Text>
                 </Pressable>
 
                 <Pressable onPress={() => navigation.navigate("SignUp")}>
