@@ -1,8 +1,11 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
+import { View } from 'react-native';
 import Home from '../screens/Home';
 import SignIn from '../screens/SignIn';
+import Calendar from '../screens/Calendar';
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 const Tab = createBottomTabNavigator();
 
 
@@ -12,7 +15,7 @@ export default function BottomNav() {
         <Tab.Navigator
             screenOptions={{
                 tabBarShowLabel: false,
-                tabBarActiveTintColor: '#153716',
+                tabBarActiveTintColor: '#000',
                 tabBarStyle: {
                     backgroundColor: 'white',
                     height: 60,
@@ -35,22 +38,42 @@ export default function BottomNav() {
                 name="Home"
                 component={Home}
                 options={{
-                    headerShown: false, tabBarIcon: ({ color, size }) => <MaterialCommunityIcons
-                        name="home"
-                        color={color}
-                        size={30}
-                    />
+                    headerShown: false, tabBarIcon: ({ color, size }) =>
+                        <View style={{ alignItems: 'center', justifyContent: 'center', top: '40%' }}>
+                            <MaterialCommunityIcons
+                                name="home"
+                                color={color}
+                                size={30}
+                            />
+                        </View>
+                }} />
+            <Tab.Screen
+                name="Calendar"
+                component={Calendar}
+                options={{
+                    headerShown: false, tabBarIcon: ({ color, size }) =>
+                        <View style={{ alignItems: 'center', justifyContent: 'center', top: '40%' }}>
+                            <Ionicons
+                                name="calendar-outline"
+                                color={color}
+                                size={30} />
+                        </View>
                 }} />
 
             <Tab.Screen
                 name="Profile"
                 component={SignIn}
                 options={{
-                    headerShown: false, tabBarIcon: ({ color, size }) => <MaterialCommunityIcons
-                        name="account"
-                        color={color}
-                        size={30} />
+                    headerShown: false, tabBarIcon: ({ color, size }) =>
+                        <View style={{ alignItems: 'center', justifyContent: 'center', top: '40%' }}>
+                            <MaterialCommunityIcons
+                                name="account"
+                                color={color}
+                                size={30} />
+                        </View>
                 }} />
+
+
         </ Tab.Navigator>
     );
 }
