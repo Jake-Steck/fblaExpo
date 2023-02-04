@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 
 
+
 export default function ImpEvents() {
     const slides = ['https://patch.com/img/cdn20/users/22844250/20200421/014148/styles/patch_image/public/livingston-highschool-schoolpr___21133742706.jpg', 'https://patch.com/img/cdn/users/22844250/2015/05/raw/20150555523bf088bd6.jpg', 'https://patch.com/img/cdn/users/22821264/2014/08/raw/5400e8ea02f3c.png']
 
@@ -39,7 +40,6 @@ export default function ImpEvents() {
                 <View style={{ position: 'absolute', backgroundColor: 'grey', top: 10, alignContent: 'center', height: 5, width: '10%', alignSelf: 'center', borderRadius: 10 }}>
                 </View>
                 <Text style={{ fontSize: 80, alignSelf: 'center' }}>2</Text>
-
             </Modal>
 
             <Modal
@@ -82,7 +82,7 @@ export default function ImpEvents() {
                             source={{
                                 uri: slides[1]
                             }}
-                            style={{ width: 350, height: 175, borderRadius: 10, marginLeft: 20 }}
+                            style={{ width: 350, height: 175, borderRadius: 10, marginLeft: 10 }}
                         />
                     </Pressable>
                     <Pressable onPress={() => setModalVisible3(true)} style={({ pressed }) => [
@@ -108,3 +108,4 @@ export default function ImpEvents() {
         </>
     )
 }
+

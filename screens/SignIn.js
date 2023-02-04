@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, Pressable } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
 import { auth, provider } from "../firebaseConfig";
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
