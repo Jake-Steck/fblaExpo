@@ -48,10 +48,25 @@ export default function BottomNav() {
                         </View>
                 }} />
             <Tab.Screen
-                name="Calendar"
+                name="LHS Calendar"
                 component={Calendar}
                 options={{
-                    headerShown: false, tabBarIcon: ({ color, size }) =>
+                    headerShown: true,
+                    headerBackground: () => (
+                        <View style={{ backgroundColor: '#64DA93', height: 100 }} />
+                    ),
+
+                    headerTitleStyle: {
+                        color: '#3D3D3D',
+                        fontSize: 20,
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                        alignSelf: 'center',
+                        flex: 1,
+                        fontFamily: 'OpenSans_700Bold',
+                    },
+                    headerTintColor: '#fff',
+                    tabBarIcon: ({ color, size }) =>
                         <View style={{ alignItems: 'center', justifyContent: 'center', top: '40%' }}>
                             <Ionicons
                                 name="calendar-outline"

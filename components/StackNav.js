@@ -16,7 +16,7 @@ export default function StackNav() {
             <Stack.Screen name="ResetPassword" component={ResetPassword} options={{ headerShown: false }} />
             <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
             <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
-            <Stack.Screen name="Calendar" component={Calendar} options={{ headerShown: false }} />
+            <Stack.Screen name="Calendar" component={Calendar} options={{ headerShown: true }} />
         </Stack.Navigator>
     );
 }
