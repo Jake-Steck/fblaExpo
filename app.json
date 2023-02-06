@@ -20,7 +20,8 @@
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "This app needs access to your location to show the weater."
+        "NSLocationWhenInUseUsageDescription": "This app needs access to your location to show the weater.",
+        "googleServicesFile": "./GoogleService-Info.plist"
       }
     },
     "android": {

@@ -7,6 +7,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import StackNav from './components/StackNav';
 import BottomNav from './components/BottomBar';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 // Font Imports
 import {
