@@ -30,6 +30,7 @@ import {
   OpenSansCondensed_300Light_Italic,
   OpenSansCondensed_700Bold,
 } from '@expo-google-fonts/open-sans-condensed';
+
 import ResetPassword from './screens/ForgetPassword';
 
 

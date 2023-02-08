@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import Home from '../screens/Home';
 import SignIn from '../screens/SignIn';
 import Calendar from '../screens/Calendar';
+import Attendance from '../screens/Attendance';
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 const Tab = createBottomTabNavigator();
@@ -47,6 +48,23 @@ export default function BottomNav() {
                             />
                         </View>
                 }} />
+
+            <Tab.Screen
+                name="Attendance"
+                component={Attendance}
+                options={{
+                    headerShown: false, tabBarIcon: ({ color, size }) =>
+                        <View style={{ alignItems: 'center', justifyContent: 'center', top: '40%' }}>
+                            <Ionicons
+                                name="md-clipboard-outline"
+                                color={color}
+                                size={30}
+                            />
+                        </View>
+                }} />
+
+
+
             <Tab.Screen
                 name="LHS Calendar"
                 component={Calendar}

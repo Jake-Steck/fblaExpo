@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, StatusBar, Component } from 'react-native';
 import { Agenda } from 'react-native-calendars';
 import { Card } from 'react-native-paper';
-import axios from 'axios';
+// import axios from 'axios';
 
 const timeToString = (time) => {
     const date = new Date(time);
@@ -76,20 +76,26 @@ export default function Calendar() {
     // };
 
     // const parseResponseData = (data) => {
-    //     const events = {};
-    //     data.forEach((event) => {
-    //         const date = event.date;
-    //         if (!events[date]) {
-    //             events[date] = [];
-    //         }
-    //         events[date].push({
-    //             name: event.name,
+    //     // convert the XML data to JSON
+    //     const parser = new xml2js.Parser();
+    //     let events = {};
+    //     parser.parseString(data, (err, result) => {
+    //         // extract the relevant information from the JSON data
+    //         events = result.rss.channel[0].item.map((item) => {
+    //             const date = item.pubDate[0].split(' ')[1] + ' ' + item.pubDate[0].split(' ')[2] + ', ' + item.pubDate[0].split(' ')[3];
+    //             const title = item.title[0];
+    //             const description = item.description[0];
+    //             return {
+    //                 date,
+    //                 title,
+    //                 description,
+    //             };
     //         });
     //     });
+    //     // return the events as key-value pairs, with the date as the key
     //     return events;
+
     // };
-
-
 
 
     // React.useEffect(() => {
