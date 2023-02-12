@@ -134,19 +134,13 @@ export default function Attenance() {
                             />
                         </View>
                         <Text style={styles.header}>Comments</Text>
-                        <View style={[styles.input, { height: Math.max(35, comments.length * 14) }]}>
+                        <View style={styles.input}>
                             <TextInput
                                 style={styles.placeholder}
                                 placeholder="Comments"
                                 onChangeText={(text) => setComments(text)}
                                 value={comments}
                                 multiline={true}
-                                onContentSizeChange={(e) => {
-                                    const { height } = e.nativeEvent.contentSize;
-                                    if (height < 140) {
-                                        this.setState({ inputHeight: Math.max(35, height) });
-                                    }
-                                }}
                                 onSubmitEditing={() => Keyboard.dismiss()}
                             />
                         </View>
