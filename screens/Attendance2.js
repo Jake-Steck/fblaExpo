@@ -7,7 +7,6 @@ import { DateTimePickerModal } from "react-native-modal-datetime-picker";
 
 export default function Attenance() {
 
-    var dateText = "Select a Date";
     const [name, setName] = React.useState('');
     const [comments, setComments] = React.useState('');
     const [startDate, setStartDate] = useState(null);
@@ -34,7 +33,7 @@ export default function Attenance() {
 
 
     return (
-        <KeyboardAvoidingView style={{ height: '80%' }} behavior="height">
+        <KeyboardAvoidingView style={{ height: '80%' }} behavior="position">
             <Attendance />
             <Text style={styles.AttendanceText}>LHS Attendance</Text>
             <View style={{ height: '80%' }}>
@@ -42,7 +41,12 @@ export default function Attenance() {
                     {/* Name Input */}
                     <View style={styles.nameContainer}>
                         <View style={styles.box}>
-                            <Ionicons name="md-person" size={'30%'} color="white" style={{ alignSelf: 'center', marginTop: '15%' }} />
+                            <Ionicons
+                                name="md-person"
+                                size={'30%'}
+                                color="white"
+                                style={{ alignSelf: 'center', marginTop: '15%' }}
+                            />
                         </View>
                         <Text style={styles.header}>Full Name<Text style={{ color: 'red' }}>*</Text></Text>
 
@@ -136,23 +140,23 @@ export default function Attenance() {
                         <Text style={styles.header}>Comments</Text>
                         <View style={styles.input}>
                             <TextInput
-                                style={styles.placeholder}
+                                style={[styles.placeholder, { top: '-10%' }]}
                                 placeholder="Comments"
                                 onChangeText={(text) => setComments(text)}
                                 value={comments}
                                 multiline={true}
+                                numberOfLines={4}
                                 onSubmitEditing={() => Keyboard.dismiss()}
                             />
                         </View>
-
-
                     </View>
-
+                    <Pressable style={styles.submitButton}>
+                        <Text style={styles.submitText}>Submit</Text>
+                    </Pressable>
 
                 </View>
             </View >
         </KeyboardAvoidingView>
-
     );
 }
 
@@ -169,7 +173,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        top: '12%',
+        top: '30%',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -180,12 +184,19 @@ const styles = StyleSheet.create({
 
     nameContainer: {
         position: 'relative',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.4,
+        shadowRadius: 3.84,
+        elevation: 5,
+        backgroundColor: '#EDEDED',
         borderRadius: 10,
-        borderColor: 'lightgrey',
-        borderWidth: 2,
         width: "90%",
         alignSelf: 'center',
-        height: '14%'
+        height: '15%'
     },
 
     box: {
@@ -194,8 +205,8 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         width: "10%",
         marginLeft: '5%',
-        marginTop: '5%',
-        height: '40%',
+        top: '22%',
+        height: '65%',
         borderColor: 'transparent',
         backgroundColor: '#75D29B',
     },
@@ -209,13 +220,19 @@ const styles = StyleSheet.create({
 
     reasonContainer: {
         position: 'relative',
-        backgroundColor: 'transparent',
+        backgroundColor: '#EDEDED',
         borderRadius: 10,
-        borderColor: 'lightgrey',
-        borderWidth: 2,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.4,
+        shadowRadius: 3.84,
+        elevation: 5,
         width: "90%",
         alignSelf: 'center',
-        height: '14%'
+        height: '15%'
     },
 
     header: {
@@ -234,13 +251,19 @@ const styles = StyleSheet.create({
 
     calContainer: {
         position: 'relative',
-        backgroundColor: 'transparent',
+        backgroundColor: '#EDEDED',
         borderRadius: 10,
-        borderColor: 'lightgrey',
-        borderWidth: 2,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.4,
+        shadowRadius: 3.84,
+        elevation: 5,
         width: "90%",
         alignSelf: 'center',
-        height: '14%'
+        height: '15%'
     },
 
     calBox: {
@@ -249,8 +272,8 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         width: "10%",
         marginLeft: '5%',
-        marginTop: '5%',
-        height: '40%',
+        top: '22%',
+        height: '65%',
         borderColor: 'transparent',
         backgroundColor: '#75D29B',
     },
@@ -264,13 +287,19 @@ const styles = StyleSheet.create({
 
     commentContainer: {
         position: 'relative',
-        backgroundColor: 'transparent',
+        backgroundColor: '#EDEDED',
         borderRadius: 10,
-        borderColor: 'lightgrey',
-        borderWidth: 2,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.4,
+        shadowRadius: 3.84,
+        elevation: 5,
         width: "90%",
         alignSelf: 'center',
-        height: '14%'
+        height: '38%'
     },
 
     commentBox: {
@@ -279,10 +308,36 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         width: "10%",
         marginLeft: '5%',
-        marginTop: '5%',
-        height: '40%',
+        top: '7%',
+        height: '28%',
         borderColor: 'transparent',
         backgroundColor: '#75D29B',
+    },
+
+    submitButton: {
+        position: 'relative',
+        backgroundColor: '#75D29B',
+        borderRadius: 10,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.4,
+        shadowRadius: 3.84,
+        elevation: 5,
+        width: "90%",
+        alignSelf: 'center',
+        height: '10%',
+        top: '10%',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
+    submitText: {
+        fontFamily: 'OpenSans_600SemiBold',
+        fontSize: '20rem',
+        color: 'white',
     },
 
 
