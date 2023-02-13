@@ -120,7 +120,7 @@ export default function SignIn({ navigation }) {
                 </Pressable>
 
                 <Pressable onPress={() => navigation.navigate("SignUp")}>
-                    <Text style={{ flex: 1, color: '#cdcdcd', marginTop: 20, flexDirection: 'row' }}>Don't have and account?<Text style={{ color: 'grey' }}> Sign Up</Text></Text>
+                    <Text style={{ flex: 1, color: '#cdcdcd', marginTop: 10, flexDirection: 'row' }}>Don't have and account?<Text style={{ color: 'grey' }}> Sign Up</Text></Text>
                 </Pressable>
 
             </View >
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
-        marginTop: 50
+        marginTop: 10
     }
 });
 
