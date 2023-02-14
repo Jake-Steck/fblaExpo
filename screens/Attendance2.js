@@ -3,20 +3,46 @@ import Attendance from '../components/AttendanceHeader';
 import { StyleSheet, Text, View, Pressable, TextInput, KeyboardAvoidingView, Keyboard } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { DateTimePickerModal } from "react-native-modal-datetime-picker";
+import { app } from '../firebaseConfig';
+import { collection, addDoc, getFirestore } from 'firebase/firestore';
 
 
 export default function Attenance() {
+    const db = getFirestore(app);
 
+    var dateText = '';
     const [name, setName] = React.useState('');
     const [comments, setComments] = React.useState('');
     const [startDate, setStartDate] = useState(null);
     const [show, setShow] = useState(false);
     const [reason, setReason] = useState('');
 
-
     const handleDateSelect = (date) => {
         if (startDate != null) {
             dateText = startDate.toString();
+        }
+    };
+
+    const handleSubmission = () => {
+        if (name == '' || reason == '' || startDate == null) {
+            alert('Please fill out all required fields');
+        } else {
+            const formattedDate = startDate.toDateString();
+            addDoc(collection(db, "attendance"), {
+                name: name,
+                reason: reason,
+                date: formattedDate,
+                comments: comments
+            }).then(() => {
+                alert('Attendance Submitted');
+                setName('');
+                setReason('');
+                setStartDate(null);
+                setComments('');
+                Keyboard.dismiss();
+            }).catch((error) => {
+                alert(error);
+            });
         }
     };
 
@@ -32,8 +58,9 @@ export default function Attenance() {
     };
 
 
+
     return (
-        <KeyboardAvoidingView style={{ height: '80%' }} behavior="position">
+        <KeyboardAvoidingView style={{ height: '70%' }} behavior="position" >
             <Attendance />
             <Text style={styles.AttendanceText}>LHS Attendance</Text>
             <View style={{ height: '80%' }}>
@@ -106,6 +133,7 @@ export default function Attenance() {
                                 isVisible={show}
                                 mode="date"
                                 display="inline"
+                                themeVariant="light"
                                 onConfirm={handleConfirm}
                                 onCancel={hideDatePicker}
                                 buttonTextColorIOS='#75D29B'
@@ -144,19 +172,30 @@ export default function Attenance() {
                                 placeholder="Comments"
                                 onChangeText={(text) => setComments(text)}
                                 value={comments}
-                                multiline={true}
                                 numberOfLines={4}
+                                multiline={true}
+                                selectTextOnFocus={true}
                                 onSubmitEditing={() => Keyboard.dismiss()}
                             />
                         </View>
                     </View>
-                    <Pressable style={styles.submitButton}>
+
+                    {/* Submit Button */}
+
+                    <Pressable style={({ pressed }) => [
+                        {
+                            backgroundColor: pressed
+                                ? '#40AD6C'
+                                : '#75D29B'
+                        },
+                        styles.submitButton]}
+                        onPress={handleSubmission}>
                         <Text style={styles.submitText}>Submit</Text>
                     </Pressable>
 
                 </View>
             </View >
-        </KeyboardAvoidingView>
+        </KeyboardAvoidingView >
     );
 }
 
@@ -173,7 +212,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        top: '30%',
+        top: '35%',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -196,7 +235,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: "90%",
         alignSelf: 'center',
-        height: '15%'
+        height: '18%'
     },
 
     box: {
@@ -232,7 +271,7 @@ const styles = StyleSheet.create({
         elevation: 5,
         width: "90%",
         alignSelf: 'center',
-        height: '15%'
+        height: '18%'
     },
 
     header: {
@@ -263,7 +302,7 @@ const styles = StyleSheet.create({
         elevation: 5,
         width: "90%",
         alignSelf: 'center',
-        height: '15%'
+        height: '18%'
     },
 
     calBox: {
@@ -316,7 +355,6 @@ const styles = StyleSheet.create({
 
     submitButton: {
         position: 'relative',
-        backgroundColor: '#75D29B',
         borderRadius: 10,
         shadowColor: "#000",
         shadowOffset: {
@@ -340,6 +378,5 @@ const styles = StyleSheet.create({
         color: 'white',
     },
 
-
-
 });
+
