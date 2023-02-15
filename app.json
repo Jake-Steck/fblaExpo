@@ -33,6 +33,9 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "plugins": [
+      "@react-native-google-signin/google-signin"
+    ],
     "backgroundColor": "#F3F3F3"
   }
 }
