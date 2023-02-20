@@ -3,6 +3,7 @@ import React from 'react';
 import { View } from 'react-native';
 import Home from '../screens/Home';
 import SignIn from '../screens/SignIn';
+import ProfileState from '../components/ProfileState';
 import Calendar from '../screens/Calendar';
 import Attendance from '../screens/Attendance';
 import Attenance2 from '../screens/Attendance2';
@@ -35,7 +36,6 @@ export default function BottomNav() {
                 }
             }}
         >
-
             <Tab.Screen
                 name="Home"
                 component={Home}
@@ -96,7 +96,7 @@ export default function BottomNav() {
 
             <Tab.Screen
                 name="Profile"
-                component={SignIn}
+                component={ProfileState}
                 options={{
                     headerShown: false, tabBarIcon: ({ color, size }) =>
                         <View style={{ alignItems: 'center', justifyContent: 'center', top: '40%' }}>

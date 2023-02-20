@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, Pressable } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -14,12 +14,10 @@ export default function SignIn({ navigation }) {
     const [password, setPassword] = useState("");
 
 
-
     let signIn = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                navigation.navigate("Home");
                 console.log(user);
             })
             .catch((error) => {
@@ -42,7 +40,6 @@ export default function SignIn({ navigation }) {
                 }
             });
     }
-
 
 
     return (
@@ -88,16 +85,6 @@ export default function SignIn({ navigation }) {
                     <Text style={{ fontFamily: "OpenSans_600SemiBold", fontSize: 20, color: 'white' }}>Log In</Text>
                 </Pressable>
 
-                {/* <Pressable onPress={"a"} style={({ pressed }) => [
-                    {
-                        backgroundColor: pressed
-                            ? '#34AE65'
-                            : '#64DA93'
-                    },
-                    styles.notPressed,
-                ]}>
-                    <Text style={{ fontFamily: "OpenSans_600SemiBold", fontSize: 20, color: 'white' }}>Log In with Google</Text>
-                </Pressable> */}
 
                 <Pressable onPress={() => navigation.navigate("SignUp")}>
                     <Text style={{ height: '20%', color: '#cdcdcd', marginTop: 10 }}>Don't have and account?<Text style={{ color: 'grey' }}> Sign Up</Text></Text>
