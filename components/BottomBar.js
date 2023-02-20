@@ -22,7 +22,6 @@ export default function BottomNav() {
                 tabBarStyle: {
                     backgroundColor: 'white',
                     height: 60,
-                    position: 'absolute',
                     borderRadius: 20,
                     marginHorizontal: 20,
                     bottom: 20,

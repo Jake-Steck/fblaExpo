@@ -13,11 +13,11 @@ export default function SignIn({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-
     let signIn = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
+                window.userEmail = user.email;
                 console.log(user);
             })
             .catch((error) => {
@@ -94,6 +94,8 @@ export default function SignIn({ navigation }) {
         </>
     );
 }
+
+
 
 const styles = StyleSheet.create({
     searchSection: {

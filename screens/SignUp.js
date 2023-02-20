@@ -18,8 +18,9 @@ export default function SignUp({ navigation }) {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                navigation.navigate("Home");
-                console.log(user);
+                console.log(user.email);
+                const email = user.email;
+                navigation.navigate("Profile");
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -34,6 +35,10 @@ export default function SignUp({ navigation }) {
                         break;
                     case "auth/internal-error":
                         alert("Please enter a valid password");
+                        break;
+                    case "auth/weak-password":
+                        alert("Please enter a stronger password (6 or more characters)");
+                        break;
                 }
             });
     };

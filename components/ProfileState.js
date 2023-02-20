@@ -8,6 +8,8 @@ import { auth } from '../firebaseConfig';
 export default function ProfileState({ navigation }) {
     const [isSignedIn, setIsSignedIn] = React.useState(false); // Local signed-in state.
     const [user, setUser] = React.useState(null); // User object.
+    const [role, setRole] = React.useState(null); // User object.
+
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((authUser) => {
