@@ -28,7 +28,7 @@ export default function SignIn({ navigation }) {
                 console.log(errorCode, errorMessage);
                 switch (errorCode) {
                     case "auth/invalid-email":
-                        alert("Please Enter a valid email address");
+                        alert("Please Enter a valid email address or sign up for an account");
                         break;
                     case "auth/user-not-found":
                         alert("User not found");

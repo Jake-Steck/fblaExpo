@@ -34,8 +34,41 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "@react-native-google-signin/google-signin"
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#ffffff",
+          "sounds": [
+            "./local/assets/notification-sound.wav",
+            "./local/assets/notification-sound-other.wav"
+          ]
+        }
+      ]
     ],
-    "backgroundColor": "#F3F3F3"
+    "notification": {
+      "iosDisplayInForeground": true,
+      "iosAllowsSound": true,
+      "iosAllowsAlert": true,
+      "iosAllowsBadge": true,
+      "tasks": [
+        {
+          "name": "default",
+          "icon": "./assets/icon.png",
+          "color": "#ffffff",
+          "priority": "max",
+          "isAvailableAsync": true,
+          "showsInForeground": true,
+          "showsInForegroundGroupedIOS": true,
+          "showsInForegroundGroupedAndroid": true
+        }
+      ]
+    },
+    "backgroundColor": "#F3F3F3",
+    "extra": {
+      "eas": {
+        "projectId": "0c664829-96b7-47d9-8a66-40d956c73140"
+      }
+    }
   }
 }

@@ -57,9 +57,12 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <StackNav />
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <StackNav />
+      </NavigationContainer>
+    </>
+
 
 
     // <View style={styles.container}>
