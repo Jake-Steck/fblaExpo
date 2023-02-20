@@ -3,14 +3,14 @@ import SignUpHeader from '../components/SignUpHeader';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, Pressable } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
-import { auth } from "../firebaseConfig";
+import { auth, db } from "../firebaseConfig";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 
 export default function SignUp({ navigation }) {
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -20,7 +20,31 @@ export default function SignUp({ navigation }) {
                 const user = userCredential.user;
                 console.log(user.email);
                 const email = user.email;
-                navigation.navigate("Profile");
+
+                if (email.endsWith("@lps-students.org")) {
+                    const userRef = doc(collection(db, "users"), user.uid);
+                    setDoc(userRef, {
+                        email: user.email,
+                        role: "student",
+                    });
+                    navigation.navigate("Profile");
+                }
+                else if (email.endsWith("@livingston.org")) {
+                    const userRef = doc(collection(db, "users"), user.uid);
+                    setDoc(userRef, {
+                        email: user.email,
+                        role: "teacher",
+                    });
+                    navigation.navigate("Profile");
+                }
+                else {
+                    const userRef = doc(collection(db, "users"), user.uid);
+                    setDoc(userRef, {
+                        email: user.email,
+                        role: "Other",
+                    });
+                    navigation.navigate("Profile");
+                }
             })
             .catch((error) => {
                 const errorCode = error.code;
