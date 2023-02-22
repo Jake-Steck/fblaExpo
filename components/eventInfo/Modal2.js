@@ -7,40 +7,21 @@ import { Button } from 'react-native-paper';
 
 
 
+function linkToPacket() {
+    const url = 'https://www.livingston.org/cms/lib/NJ01000562/Centricity/ModuleInstance/3016/LHS%20Schedule%20Change%20Form%202022-2023%20-%20Semester%202.pdf';
+    Linking.openURL(url);
+}
+
 export default function ModalContent1({ closeModal }) {
 
-
-    function directions() {
-        const address = 'West Essex YMCA, 321 S Livingston Ave, Livingston, NJ 07039';
-        const url = `http://maps.apple.com/?daddr=${encodeURIComponent(address)}`;
-        Linking.openURL(url);
-    }
-
-
-    let location = {
-        latitude: 40.783620,
-        longitude: -74.314140,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-    }
 
 
     return (
         <View style={{ backgroundColor: 'white', height: '100%', width: '100%' }}>
-
-            <MapView
-                style={{ height: '50%', width: '100%' }}
-                initialRegion={location}
-                showsUserLocation={true}
-            >
-                <Marker
-                    coordinate={location}
-                    title="West Essex (Livingston) YMCA"
-                    showsUserLocation={true}
-                >
-                    <View style={{ backgroundColor: 'white', height: 20, width: 20, borderRadius: 20, borderColor: 'grey', borderWidth: 5 }} />
-                </Marker>
-            </MapView>
+            <Image
+                style={{ height: '50%', width: '100%', opacity: 0.7 }}
+                source={require('../../assets/imgs/info/change.jpg')}
+            />
 
             <Button
                 icon="close"
@@ -52,34 +33,31 @@ export default function ModalContent1({ closeModal }) {
 
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, paddingLeft: 40, paddingRight: 40 }}>
                 <View>
-                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Location: West Essex YMCA</Text>
-                    <Text style={{ fontSize: 15, color: 'grey' }}>Sport: Swimming</Text>
-                    <Text style={{ fontSize: 15, color: 'grey' }}>Against: West Essex</Text>
-                    <Text style={{ fontSize: 15, color: 'grey' }}>Date: March 16, 2023</Text>
-                    <Text style={{ fontSize: 15, color: 'grey' }}>Time: 3:00 PM</Text>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Type: Scheduling (Semester 2)</Text>
+                    <Text style={{ fontSize: 15, color: 'grey' }}>Concerning: Semester 2 Students</Text>
+                    <Text style={{ fontSize: 15, color: 'grey' }}>Grades: 9-12</Text>
+                    <Text style={{ fontSize: 15, color: 'grey' }}>Window 1: 1/27/23 to 2/2/23</Text>
+                    <Text style={{ fontSize: 15, color: 'grey' }}>Window 2: 3/2/23 to 3/7/23</Text>
+                    <Text style={{ fontSize: 15, color: 'grey' }}>Window 3: 3/27/23 to 3/31/23</Text>
+
                 </View>
             </View>
 
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, paddingLeft: 40, paddingRight: 40 }}>
                 <View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Tickets: Available Upon Entry</Text>
+                        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Note: You can only drop Semster Length Electives</Text>
                     </View>
-                    <Text style={{ fontSize: 15, color: 'grey' }}>Price: Students - $2 | Other - $3</Text>
-                    <Text style={{ fontSize: 15, color: 'grey' }}>Payment: Cash/Card</Text>
+                    <Text style={{ fontSize: 15, color: 'grey' }}>Additional: You are only able to switch to another S2 Course during Window 1, and if it has available seats. For Window 2 + 3, you can only drop to Study Hall. No markings on your trasncript.</Text>
                 </View>
             </View>
-            <Button style={{ marginTop: 50, width: '100%', alignSelf: 'center', backgroundColor: '#3D3D3D' }} onPress={directions} mode="contained">Directions</Button>
+
+            <Button style={{ backgroundColor: '#3D3D3D', width: '40%', marginLeft: '28%', marginTop: '10%' }} onPress={linkToPacket} mode="contained">More Information</Button>
+
+
+
+
 
         </View >
     );
 }
-
-const styles = StyleSheet.create({
-    pressed: {
-        backgroundColor: 'grey',
-    },
-    notPressed: {
-        backgroundColor: 'white',
-    },
-});

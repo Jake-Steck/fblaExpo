@@ -23,7 +23,7 @@ export default function ModalContent1({ closeModal }) {
         <View style={{ backgroundColor: 'white', height: '100%', width: '100%' }}>
             <Image
                 style={{ height: '50%', width: '100%', opacity: 0.7 }}
-                source={require('../../assets/imgs/info/mod1.jpeg')}
+                source={require('../../assets/imgs/info/mod1.jpg')}
             />
 
             <Button
