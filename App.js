@@ -8,6 +8,7 @@ import { StatusBar } from 'expo-status-bar';
 import StackNav from './components/StackNav';
 import BottomNav from './components/BottomBar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getAuth } from 'firebase/auth';
 
 
 // Font Imports
