@@ -6,10 +6,15 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 import tw from 'tailwind-react-native-classnames';
 import { User } from 'firebase/auth';
-import { getAuth } from "firebase/auth";
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
+import ViewAttendance from '../screens/ViewAttendance';
 
 export default function Profile({ navigation }) {
+
+    let handleAttendance = () => {
+        navigation.navigate("ViewAttendance")
+    }
+
 
     let SignOut = () => {
         signOut(auth).then(() => {
@@ -21,6 +26,8 @@ export default function Profile({ navigation }) {
             console.log(error)
         });
     }
+
+
 
     const handleSchoology = () => {
         Linking.openURL('https://livingston.schoology.com/');
@@ -68,7 +75,9 @@ export default function Profile({ navigation }) {
                         <Text style={{ fontFamily: 'OpenSans_700Bold', fontSize: 25, color: '#3D3D3D', left: '20%', bottom: 45 }}>Schoology</Text>
                     </Pressable>
                 </View>
+
                 <View style={{ height: 2, backgroundColor: 'lightgrey', bottom: 15, width: 350 }} />
+
                 <View>
                     <Pressable onPress={handleGenesis} style={({ pressed }) => [
                         {
@@ -79,7 +88,9 @@ export default function Profile({ navigation }) {
                         <Text style={{ fontFamily: 'OpenSans_700Bold', fontSize: 25, color: '#3D3D3D', left: '20%', bottom: 45 }}>Genesis</Text>
                     </Pressable>
                 </View>
+
                 <View style={{ borderWidth: 1, borderColor: 'lightgrey', bottom: 15, }} />
+
                 <View>
                     <Pressable style={({ pressed }) => [
                         {
@@ -90,18 +101,23 @@ export default function Profile({ navigation }) {
                         <Text style={{ fontFamily: 'OpenSans_700Bold', fontSize: 25, color: '#3D3D3D', left: '20%', bottom: 45 }}>Share Photo</Text>
                     </Pressable>
                 </View>
+
                 <View style={{ borderWidth: 1, borderColor: 'lightgrey', bottom: 15, }} />
+
                 <View>
-                    <Pressable onPress={SignOut} style={({ pressed }) => [
+                    <Pressable onPress={handleAttendance} style={({ pressed }) => [
                         {
                             opacity: pressed ? 0.5 : 1
                         }
                     ]}>
+
                         <MaterialCommunityIcons name="account-check" size={55} style={{ color: "#75D29B" }} />
                         <Text style={{ fontFamily: 'OpenSans_700Bold', fontSize: 25, color: '#3D3D3D', left: '20%', bottom: 45 }}>View Attendance</Text>
                     </Pressable>
                 </View>
+
                 <View style={{ borderWidth: 1, borderColor: 'lightgrey', bottom: 15, }} />
+
                 <View>
                     <Pressable onPress={SignOut} style={({ pressed }) => [
                         {

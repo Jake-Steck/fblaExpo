@@ -10,6 +10,7 @@ import ProfileT from '../screens/ProfileT';
 import { createStackNavigator } from '@react-navigation/stack';
 import ResetPassword from '../screens/ForgetPassword';
 import BottomNav from './BottomBar';
+import ViewAttendance from '../screens/ViewAttendance';
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ export default function StackNav() {
             <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }} />
             <Stack.Screen name="StudentProf" component={ProfileS} options={{ headerShown: false }} />
             <Stack.Screen name="TeacherProf" component={ProfileT} options={{ headerShown: false }} />
+            <Stack.Screen name="ViewAttendance" component={ViewAttendance} options={{ headerShown: false }} />
         </Stack.Navigator>
     );
 }
