@@ -11,16 +11,12 @@ import ViewAttendance from '../screens/ViewAttendance';
 
 export default function Profile({ navigation }) {
 
-    let handleAttendance = () => {
-        navigation.navigate("ViewAttendance")
-    }
-
 
     let SignOut = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
             console.log("Sign-out successful.")
-            navigation.replace("SignIn")
+            navigation.navigate("SignIn")
         }).catch((error) => {
             // An error happened.
             console.log(error)

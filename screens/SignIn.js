@@ -18,7 +18,6 @@ export default function SignIn({ navigation }) {
             .then((userCredential) => {
                 const user = userCredential.user;
                 window.userEmail = user.email;
-                console.log(user);
             })
             .catch((error) => {
                 const errorCode = error.code;

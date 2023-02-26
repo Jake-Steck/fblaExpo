@@ -7,12 +7,12 @@ import { auth } from '../firebaseConfig';
 import tw from 'tailwind-react-native-classnames';
 import { User } from 'firebase/auth';
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
-import ViewAttendance from '../screens/ViewAttendance';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Profile({ navigation }) {
-
+export default function Profile() {
+    const navigation = useNavigation();
     let handleAttendance = () => {
-        navigation.navigate("ViewAttendance")
+        navigation.push("ViewAttendance")
     }
 
 
@@ -20,7 +20,6 @@ export default function Profile({ navigation }) {
         signOut(auth).then(() => {
             // Sign-out successful.
             console.log("Sign-out successful.")
-            navigation.replace("SignIn")
         }).catch((error) => {
             // An error happened.
             console.log(error)

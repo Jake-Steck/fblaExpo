@@ -18,7 +18,6 @@ export default function SignUp({ navigation }) {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user.email);
                 const email = user.email;
 
                 if (email.endsWith("@lps-students.org")) {

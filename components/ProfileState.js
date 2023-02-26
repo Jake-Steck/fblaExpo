@@ -40,7 +40,7 @@ export default function ProfileState({ navigation }) {
     } else if (!roleLoaded) {
         return <View><Text>Loading...</Text></View>;
     } else if (role === 'teacher') {
-        return <TeacherProf navigation={navigation} />;
+        return <TeacherProf />;
 
     } else if (role === 'student') {
         return <StudentProf />;
