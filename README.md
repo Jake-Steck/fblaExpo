@@ -29,7 +29,7 @@ The Livingston High School Mobile App provides easy access to school necessities
 
 ## License
 
-[Insert the license under which your project is released here]
+This App is listed under the BSD 3-Clause License. 
 
 ## Contact
 
