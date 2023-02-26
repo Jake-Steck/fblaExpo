@@ -1,4 +1,4 @@
-Livingston High School Mobile App
+# Livingston High School Mobile App
 The Livingston High School Mobile App is designed to provide easy access to school necessities for staff, students, and guardians. It offers essential features to help connect staff, guardians, and students with each other.
 
 Key Features
