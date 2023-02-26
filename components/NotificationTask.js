@@ -73,7 +73,7 @@ async function schedulePushNotification() {
     const randomQuote = getRandomQuote();
     const day = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date());
     const notificationDate = new Date();
-    notificationDate.setHours(7, 0, 0); // Set notification time to 1:14 PM every day
+    notificationDate.setHours(7, 0, 0); // Set notification time to 7 AM every day
 
     // Get the last notification date from the device storage
     const lastNotificationDate = await AsyncStorage.getItem('lastNotificationDate');
@@ -106,26 +106,8 @@ async function schedulePushNotification() {
         // Store the last notification date in the device storage
         await AsyncStorage.setItem('lastNotificationDate', now.toString());
     }).catch((error) => console.log(error));
-
-
-
-    await Notifications.scheduleNotificationAsync({
-        content: {
-            title: `Have a great ${day}!`,
-            body: `"${randomQuote.quote}" -${randomQuote.author}`,
-            data: { data: 'goes here' },
-            icon: icon,
-            badge: 1,
-        },
-        trigger: {
-            hour: notificationDate.getHours(),
-            minute: notificationDate.getMinutes(),
-        },
-    }).then(async () => {
-        // Store the last notification date in the device storage
-        await AsyncStorage.setItem('lastNotificationDate', now.toString());
-    }).catch((error) => console.log(error));
 }
+
 
 
 async function registerForPushNotificationsAsync() {
