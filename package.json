@@ -59,6 +59,7 @@
     "react-native-picker": "^4.3.7",
     "react-native-safe-area-context": "4.4.1",
     "react-native-screens": "~3.18.0",
+    "react-native-table-component": "^1.2.2",
     "react-native-viewport-units": "^0.0.5",
     "tailwind-react-native-classnames": "^1.5.1"
   },
