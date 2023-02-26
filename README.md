@@ -2,14 +2,14 @@
 
 The Livingston High School Mobile App provides easy access to school necessities for staff, students, and guardians. Its key features include:
 
-- An attendance form for Students/Parents to notify Staff members of upcoming absences made with Google's Firestore.
-- Easy access to Schoology and Genesis through the integrated Profile Page.
-- Ability for Students and Staff to share photos with each other.
-- A calendar with upcoming school events.
-- An important event section with information on upcoming important events and reminders.
-- An upcoming athletic game section which provides details and directions to the sporting event.
-- A sign-in system developed using Google's Firebase that assigns a user to a role (teacher, student, etc.) based on the ending of their email.
-- Easy access to the current temperature in Livingston, NJ.
+- A notification system for student and parent absences, utilizing Google's Firestore technology.
+- A seamless integration of Schoology and Genesis into a unified user Profile Page.
+- A photo-sharing feature for students and staff to communicate and collaborate effectively.
+- A comprehensive calendar displaying upcoming school events.
+- A critical events section highlighting important upcoming events and serving as a reminder.
+- A detailed athletic schedule featuring game details and directions to venues.
+- A robust sign-in system, developed using Google's Firebase technology, that assigns users to specific roles based on their email address.
+- Convenient access to real-time weather information for Livingston, NJ.
 
 ## Installation and Usage
 
