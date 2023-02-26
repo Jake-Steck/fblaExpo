@@ -1,29 +1,36 @@
 # Livingston High School Mobile App
-The Livingston High School Mobile App is designed to provide easy access to school necessities for staff, students, and guardians. It offers essential features to help connect staff, guardians, and students with each other.
 
-Key Features
-Attendance form for students/parents to notify staff members of upcoming absences made with Google's Firestore
-Easy access to Schoology and Genesis through the integrated Profile Page
-Ability for students and staff to share photos with each other
-Calendar with upcoming school events
-Important event section with information on upcoming important events and reminders
-Upcoming athletic game section which provides details and directions to the sporting event
-Sign-in system developed using Google's Firebase that assigns a user to a role (teacher, student, etc.) based on the ending of their email
-Easy access to current temperature in Livingston, NJ
-Installation and Usage
-n/a at this moment
+The Livingston High School Mobile App provides easy access to school necessities for staff, students, and guardians. Its key features include:
 
-Prerequisites
-n/a at this moment
+- An attendance form for Students/Parents to notify Staff members of upcoming absences made with Google's Firestore.
+- Easy access to Schoology and Genesis through the integrated Profile Page.
+- Ability for Students and Staff to share photos with each other.
+- A calendar with upcoming school events.
+- An important event section with information on upcoming important events and reminders.
+- An upcoming athletic game section which provides details and directions to the sporting event.
+- A sign-in system developed using Google's Firebase that assigns a user to a role (teacher, student, etc.) based on the ending of their email.
+- Easy access to the current temperature in Livingston, NJ.
 
-Known Issues or Limitations
-n/a at this moment
+## Installation and Usage
 
-Contributing
-n/a at this moment
+[Insert installation and usage instructions here]
 
-License
-n/a at this moment
+## Prerequisites
 
-Contact and Issue Reporting
-If you have any questions or issues with the app, please contact jakestecklownj@gmail.com or bmreitman@gmail.com.
+[Insert any prerequisites for using your project here]
+
+## Known Issues/Limitations
+
+[Insert any known issues or limitations with your project here]
+
+## Contributing
+
+[Insert how users can contribute to your project here]
+
+## License
+
+[Insert the license under which your project is released here]
+
+## Contact
+
+For any questions or issues with the project, please contact jakestecklownj@gmail.com or bmreitman@gmail.com.
