@@ -58,7 +58,7 @@ export default function Profile() {
             <Image source={require('../assets/imgs/sun.png')} style={tw`absolute top-48 left-10 w-6 h-6`} />
             <Text style={{ fontFamily: 'OpenSans_300Light', position: 'absolute', top: 192, left: 70, fontSize: 20, color: '#3D3D3D' }}>{temp}°F</Text>
 
-            <View style={{ backgroundColor: '#F3F3F3', width: 130, height: 130, borderRadius: 100, shadowColor: 'black', shadowOpacity: 1, shadowOffset: 20, top: "-15%" }}>
+            <View style={{ backgroundColor: '#F3F3F3', width: 130, height: 130, borderRadius: 100, shadowColor: 'black', shadowOpacity: 1, shadowOffset: { width: 1, height: 1 }, top: "-15%" }}>
                 <MaterialCommunityIcons name="account" size={120} style={{ color: "#75D29B", alignSelf: 'center' }} />
             </View>
 
