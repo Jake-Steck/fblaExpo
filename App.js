@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import Home from './screens/Home';
-import SignIn from './screens/SignIn';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import StackNav from './components/StackNav';
-import BottomNav from './components/BottomBar';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getAuth } from 'firebase/auth';
+import NotificationTask from './components/NotificationTask';
+
 
 
 // Font Imports
@@ -32,7 +28,6 @@ import {
   OpenSansCondensed_700Bold,
 } from '@expo-google-fonts/open-sans-condensed';
 
-import ResetPassword from './screens/ForgetPassword';
 
 
 // Main App Function
@@ -62,6 +57,7 @@ export default function App() {
       <NavigationContainer>
         <StackNav />
       </NavigationContainer>
+      <NotificationTask />
     </>
 
 
