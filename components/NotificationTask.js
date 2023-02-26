@@ -101,7 +101,6 @@ async function schedulePushNotification() {
         trigger: {
             hour: notificationDate.getHours(),
             minute: notificationDate.getMinutes(),
-            repeats: true,
         },
     }).then(async () => {
         // Store the last notification date in the device storage
@@ -121,7 +120,6 @@ async function schedulePushNotification() {
         trigger: {
             hour: notificationDate.getHours(),
             minute: notificationDate.getMinutes(),
-            repeats: true,
         },
     }).then(async () => {
         // Store the last notification date in the device storage
