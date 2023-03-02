@@ -11,21 +11,7 @@ The Livingston High School Mobile App provides easy access to school necessities
 - A robust sign-in system, developed using Google's Firebase technology, that assigns users to specific roles based on their email address.
 - Convenient access to real-time weather information for Livingston, NJ.
 
-## Installation and Usage
-
-[Insert installation and usage instructions here]
-
-## Prerequisites
-
-[Insert any prerequisites for using your project here]
-
-## Known Issues/Limitations
-
-[Insert any known issues or limitations with your project here]
-
-## Contributing
-
-[Insert how users can contribute to your project here]
+None at this time
 
 ## License
 
