@@ -57,7 +57,6 @@ export default function App() {
       <NavigationContainer>
         <StackNav />
       </NavigationContainer>
-      <NotificationTask />
     </>
 
 
