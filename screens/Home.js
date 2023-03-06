@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
 import HomeHeader from '../components/HomeHeader';
 import ImpEvents from '../components/ImpEvents';
 import Sports from '../components/Sports';
+import QuickActions from '../components/QuickActions';
 
 export default function Home() {
 
@@ -14,6 +15,7 @@ export default function Home() {
             <ScrollView contentContainerStyle={{ bottom: 20 }}>
                 <ImpEvents />
                 <Sports />
+                <QuickActions />
             </ScrollView>
         </>
     );
