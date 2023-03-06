@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Button, TextInput, Pressable, Linking } from 'react-native';
 import { useState, useEffect } from 'react';
 import React from 'react';
-import {Image} from 'react-native';
+import { Image } from 'react-native';
 import { signOut } from 'firebase/auth';
 import tw from 'tailwind-react-native-classnames';
 import { User } from 'firebase/auth';
@@ -21,123 +21,124 @@ import _app from '../firebaseConfig';
 
 export default function PhotoShare({ navigation }) {
 
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [uploading, setUploading] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [uploading, setUploading] = useState(false);
 
-  const storage = getStorage();
-  const storageRef = ref(storage, 'images/stars15.jpg');
+    const storage = getStorage();
+    const storageRef = ref(storage, 'images/stars15.jpg');
 
-  const uploadImage = async () => {
-    try {
-      const blob = await new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.onload = function() {
-          resolve(xhr.response);
-        };
-        xhr.onerror = function() {
-          reject(new TypeError('Network request failed'));
-        };
-        xhr.responseType = 'blob';
-        xhr.open('GET', selectedImage, true);
-        xhr.send(null);
-      });
-  
-      const ref = firebase.storage().ref().child(`Pictures/Image1`);
-      const snapshot = ref.put(blob);
-      setUploading(true);
-  
-      snapshot.on(
-        firebase.storage.TaskEvent.STATE_CHANGED,
-        null,
-        (error) => {
-          setUploading(false);
-          console.log(error);
-          blob.close();
-          throw error;
-        },
-        () => {
-          snapshot.snapshot.ref.getDownloadURL().then((url) => {
-            setUploading(false);
-            console.log("Download URL: ", url);
-            setImage(url);
-            blob.close();
-            return url;
-          });
+    const uploadImage = async () => {
+        try {
+            const blob = await new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.onload = function () {
+                    resolve(xhr.response);
+                };
+                xhr.onerror = function () {
+                    reject(new TypeError('Network request failed'));
+                };
+                xhr.responseType = 'blob';
+                xhr.open('GET', selectedImage, true);
+                xhr.send(null);
+            });
+
+            const ref = firebase.storage().ref().child(`Pictures/Image1`);
+            const snapshot = ref.put(blob);
+            setUploading(true);
+
+            snapshot.on(
+                firebase.storage.TaskEvent.STATE_CHANGED,
+                null,
+                (error) => {
+                    setUploading(false);
+                    console.log(error);
+                    blob.close();
+                    throw error;
+                },
+                () => {
+                    snapshot.snapshot.ref.getDownloadURL().then((url) => {
+                        setUploading(false);
+                        console.log("Download URL: ", url);
+                        setImage(url);
+                        blob.close();
+                        return url;
+                    });
+                }
+            );
+        } catch (error) {
+            console.log(error);
         }
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  
-  
-  
+    };
 
-  useEffect(() => {
+
+
+
+    useEffect(() => {
         (async () => {
-        if (Platform.OS !== 'web') {
-            const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-            if (status !== 'granted') {
-            alert('Sorry, we need camera roll permissions to make this work!');
+            if (Platform.OS !== 'web') {
+                const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+                if (status !== 'granted') {
+                    alert('Sorry, we need camera roll permissions to make this work!');
+                }
+                const { cameraStatus } = await ImagePicker.requestCameraPermissionsAsync();
             }
-            const { cameraStatus } = await ImagePicker.requestCameraPermissionsAsync();
-        }
         })();
     }, []);
 
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
-        quality: 1,
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            quality: 1,
         });
 
         if (!result.cancelled) {
-        setSelectedImage(result.uri);
+            setSelectedImage(result.assets[0].uri);
         }
     };
 
     const takePhoto = async () => {
         let result = await ImagePicker.launchCameraAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
-        quality: 1,
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            quality: 1,
         });
 
         if (!result.cancelled) {
-        setSelectedImage(result.uri);
+            setSelectedImage(result.assets[0].uri);
         }
     };
+
 
     return (
         <View style={styles.container}>
             <Image source={require('../assets/imgs/Aheader.png')} style={{ position: 'absolute', width: '100%', height: '40%', top: 0 }} />
             <Pressable onPress={pickImage} style={({ pressed }) => [
-                        {
-                            opacity: pressed ? 0.5 : 1
-                        }, {
-                            top: "66.7%", right: 75
-                        }
-                    ]}>
-                <MaterialCommunityIcons name="upload" size={90} style = {{ color: "#75D29B", alignSelf: 'center', borderWidth: 4, borderRadius: 10, borderColor: "#75D29B" }}/>
+                {
+                    opacity: pressed ? 0.5 : 1
+                }, {
+                    top: "66.7%", right: 75
+                }
+            ]}>
+                <MaterialCommunityIcons name="upload" size={90} style={{ color: "#75D29B", alignSelf: 'center', borderWidth: 4, borderRadius: 10, borderColor: "#75D29B", top: '-50%' }} />
             </Pressable>
             <Pressable onPress={takePhoto} style={({ pressed }) => [
-                        {
-                            opacity: pressed ? 0.5 : 1
-                        }, {
-                            top: "55%", left: 75
-                        }
-                    ]}>
-                <MaterialCommunityIcons name="camera" size={90} style = {{ color: "#75D29B", alignSelf: 'center', borderWidth: 4, borderRadius: 10, borderColor: "#75D29B" }}/>
+                {
+                    opacity: pressed ? 0.5 : 1
+                }, {
+                    top: "55%", left: 75
+                }
+            ]}>
+                <MaterialCommunityIcons name="camera" size={90} style={{ color: "#75D29B", alignSelf: 'center', borderWidth: 4, borderRadius: 10, borderColor: "#75D29B", top: '-40%' }} />
             </Pressable>
-            <View style={{ bottom: "15%", borderColor: "#75D29B", borderWidth: 3, padding: 5}}>
-            {selectedImage ? (
-                <Image source={{ uri: selectedImage }} style={{ width: 300, height: 450 }} />
+            <View style={{ bottom: "15%", borderColor: "#75D29B", borderWidth: 3, padding: 5 }}>
+                {selectedImage ? (
+                    <Image source={{ uri: selectedImage }} style={{ width: 300, height: 450 }} />
                 ) : (
-                <View style={{ width: 300, height: 450, backgroundColor: 'white' }} />
+                    <View style={{ width: 300, height: 450, backgroundColor: 'white' }} />
                 )}
             </View>
             <Pressable onPress={() => {
                 const uploadTask = uploadBytesResumable(storageRef, selectedImage);
-                
+
 
                 uploadTask.on('state_changed',
                     (snapshot) => {
@@ -145,30 +146,30 @@ export default function PhotoShare({ navigation }) {
                         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                         console.log('Upload is ' + progress + '% done');
                         switch (snapshot.state) {
-                        case 'paused':
-                            console.log('Upload is paused');
-                            break;
-                        case 'running':
-                            console.log('Upload is running');
-                            break;
+                            case 'paused':
+                                console.log('Upload is paused');
+                                break;
+                            case 'running':
+                                console.log('Upload is running');
+                                break;
                         }
-                    }, 
+                    },
                     (error) => {
                         // A full list of error codes is available at
                         // https://firebase.google.com/docs/storage/web/handle-errors
                         switch (error.code) {
-                        case 'storage/unauthorized':
-                            // User doesn't have permission to access the object
-                            break;
-                        case 'storage/canceled':
-                            // User canceled the upload
-                            break;
+                            case 'storage/unauthorized':
+                                // User doesn't have permission to access the object
+                                break;
+                            case 'storage/canceled':
+                                // User canceled the upload
+                                break;
 
-                        // ...
+                            // ...
 
-                        case 'storage/unknown':
-                            // Unknown error occurred, inspect error.serverResponse
-                            break;
+                            case 'storage/unknown':
+                                // Unknown error occurred, inspect error.serverResponse
+                                break;
                         }
                     });
             }
@@ -179,9 +180,9 @@ export default function PhotoShare({ navigation }) {
                     borderRadius: 20, borderWidth: 3, borderColor: "#75D29B", width: 200, height: 75, bottom: "-2%"
                 }
             ]}>
-                <Text style={{ color: "#75D29B", fontSize: 40, fontWeight: "bold", top: "13%", alignSelf: 'center'}}>Upload</Text>
+                <Text style={{ color: "#75D29B", fontSize: 40, fontWeight: "bold", top: "13%", alignSelf: 'center' }}>Upload</Text>
             </Pressable>
-             <MaterialIcons name="arrow-back-ios" size={40} color="black" style={{ position: 'absolute', marginTop: '190%', right: "80%" }} onPress={() => navigation.goBack()} />
+            <MaterialIcons name="arrow-back-ios" size={40} color="black" style={{ position: 'absolute', marginTop: '190%', right: "80%" }} onPress={() => navigation.goBack()} />
         </View>
     )
 }
