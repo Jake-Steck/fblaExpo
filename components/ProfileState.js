@@ -43,7 +43,7 @@ export default function ProfileState({ navigation }) {
         return <TeacherProf />;
 
     } else if (role === 'student') {
-        return <StudentProf />;
+        return <StudentProf navigation={navigation} />;
     } else {
         return <OtherProf />;
     }

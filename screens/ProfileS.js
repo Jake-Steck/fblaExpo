@@ -8,9 +8,11 @@ import tw from 'tailwind-react-native-classnames';
 import { User } from 'firebase/auth';
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
 import ViewAttendance from '../screens/ViewAttendance';
+import { useNavigation } from '@react-navigation/core';
+import PhotoShare from './PhotoShare';
+import StackNav from '../components/StackNav';
 
 export default function Profile({ navigation }) {
-
 
     let SignOut = () => {
         signOut(auth).then(() => {
@@ -22,8 +24,6 @@ export default function Profile({ navigation }) {
             console.log(error)
         });
     }
-
-
 
     const handleSchoology = () => {
         Linking.openURL('https://livingston.schoology.com/');
@@ -42,7 +42,6 @@ export default function Profile({ navigation }) {
         .then(data => {
             setTemp(Math.round(data.main.temp))
         })
-
 
     return (
         <View style={styles.container}>
@@ -88,7 +87,7 @@ export default function Profile({ navigation }) {
                 <View style={{ borderWidth: 1, borderColor: 'lightgrey', bottom: 15, }} />
 
                 <View>
-                    <Pressable style={({ pressed }) => [
+                    <Pressable onPress={() => navigation.navigate("PhotoShare")} style={({ pressed }) => [
                         {
                             opacity: pressed ? 0.5 : 1
                         }

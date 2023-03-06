@@ -11,6 +11,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import ResetPassword from '../screens/ForgetPassword';
 import BottomNav from './BottomBar';
 import ViewAttendance from '../screens/ViewAttendance';
+import PhotoShare from '../screens/PhotoShare';
+import Profile from '../screens/ProfileS';
 
 const Stack = createStackNavigator();
 
@@ -27,6 +29,8 @@ export default function StackNav() {
             <Stack.Screen name="StudentProf" component={ProfileS} options={{ headerShown: false }} />
             <Stack.Screen name="TeacherProf" component={ProfileT} options={{ headerShown: false }} />
             <Stack.Screen name="ViewAttendance" component={ViewAttendance} options={{ headerShown: false }} />
+            <Stack.Screen name = "PhotoShare" component={PhotoShare} options={{ headerShown: false }} />
+            <Stack.Screen name="ProfileS" component={Profile} options={{ headerShown: false }} />
         </Stack.Navigator>
     );
 }

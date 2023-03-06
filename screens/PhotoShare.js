@@ -14,31 +14,62 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from 'react-native-vector-icons';
 import firebase from 'firebase/app';
 import firebaseConfig from '../firebaseConfig';
-import { getStorage, ref, uploadBytes } from 'firebase/storage';
+import { getStorage, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage';
 import 'firebase/storage';
-import { fbUriToFirebaseStorage } from '../components/ImageUpload.js';
+import { ActivityIndicator } from 'react-native-paper';
+import _app from '../firebaseConfig';
 
 export default function PhotoShare({ navigation }) {
 
   const [selectedImage, setSelectedImage] = useState(null);
   const [uploading, setUploading] = useState(false);
 
+  const storage = getStorage();
+  const storageRef = ref(storage, 'images/stars15.jpg');
+
   const uploadImage = async () => {
-    setUploading(true);
     try {
-      await fbUriToFirebaseStorage(
-        selectedImage,
-        'images',
-        (progress) => console.log(`Upload progress: ${progress}`),
-        (downloadUrl) => console.log(`Download URL: ${downloadUrl}`),
+      const blob = await new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+          resolve(xhr.response);
+        };
+        xhr.onerror = function() {
+          reject(new TypeError('Network request failed'));
+        };
+        xhr.responseType = 'blob';
+        xhr.open('GET', selectedImage, true);
+        xhr.send(null);
+      });
+  
+      const ref = firebase.storage().ref().child(`Pictures/Image1`);
+      const snapshot = ref.put(blob);
+      setUploading(true);
+  
+      snapshot.on(
+        firebase.storage.TaskEvent.STATE_CHANGED,
+        null,
+        (error) => {
+          setUploading(false);
+          console.log(error);
+          blob.close();
+          throw error;
+        },
+        () => {
+          snapshot.snapshot.ref.getDownloadURL().then((url) => {
+            setUploading(false);
+            console.log("Download URL: ", url);
+            setImage(url);
+            blob.close();
+            return url;
+          });
+        }
       );
-      console.log('Image uploaded to Firebase Storage');
-      setUploading(false);
     } catch (error) {
-      console.log('Error uploading image: ', error);
-      setUploading(false);
+      console.log(error);
     }
   };
+  
   
   
 
@@ -104,7 +135,44 @@ export default function PhotoShare({ navigation }) {
                 <View style={{ width: 300, height: 450, backgroundColor: 'white' }} />
                 )}
             </View>
-            <Pressable onPress={uploadImage} style={({ pressed }) => [
+            <Pressable onPress={() => {
+                const uploadTask = uploadBytesResumable(storageRef, selectedImage);
+                
+
+                uploadTask.on('state_changed',
+                    (snapshot) => {
+                        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        console.log('Upload is ' + progress + '% done');
+                        switch (snapshot.state) {
+                        case 'paused':
+                            console.log('Upload is paused');
+                            break;
+                        case 'running':
+                            console.log('Upload is running');
+                            break;
+                        }
+                    }, 
+                    (error) => {
+                        // A full list of error codes is available at
+                        // https://firebase.google.com/docs/storage/web/handle-errors
+                        switch (error.code) {
+                        case 'storage/unauthorized':
+                            // User doesn't have permission to access the object
+                            break;
+                        case 'storage/canceled':
+                            // User canceled the upload
+                            break;
+
+                        // ...
+
+                        case 'storage/unknown':
+                            // Unknown error occurred, inspect error.serverResponse
+                            break;
+                        }
+                    });
+            }
+            } style={({ pressed }) => [
                 {
                     opacity: pressed ? 0.5 : 1
                 }, {
