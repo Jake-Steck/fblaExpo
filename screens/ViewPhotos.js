@@ -60,7 +60,7 @@ export default function ViewPhotos() {
                     style={{ position: 'absolute', marginTop: '15%', marginLeft: '5%' }}
                     onPress={() => navigation.goBack()}
                 />
-                <Text style={styles.text}>View Attendance</Text>
+                <Text style={styles.text}>View Photos</Text>
             </View>
             <View style={{ marginTop: '45%' }} />
             <View style={styles.formatImage}>
@@ -138,4 +138,3 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
 });
-
