@@ -23,7 +23,8 @@
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "This app needs access to your location to show the weater.",
         "googleServicesFile": "./GoogleService-Info.plist"
-      }
+      },
+      "bundleIdentifier": "com.jrsteck.fblaExpo"
     },
     "android": {
       "adaptiveIcon": {
