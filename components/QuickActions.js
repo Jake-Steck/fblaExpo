@@ -29,6 +29,14 @@ export default function QuickActions() {
         Linking.openURL('http://maps.apple.com/?q=Livingston+High+School+New+Jersey');
     }
 
+    const handleTwitter = () => {
+        Linking.openURL('https://twitter.com/Livingston_NJ');
+    }
+
+    const handleWebsite = () => {
+        Linking.openURL('https://www.livingston.org/Domain/667');
+    }
+
 
 
     return (
@@ -52,6 +60,14 @@ export default function QuickActions() {
                     </Pressable>
                     <Pressable style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1 }]} onPress={() => navigation.navigate("PhotoShare")}>
                         <Image source={require('../assets/imgs/quick/share.png')} style={{ width: 230, height: 175, borderRadius: 10, marginLeft: 20 }}
+                        />
+                    </Pressable>
+                    <Pressable style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1 }]} onPress={handleTwitter}>
+                        <Image source={require('../assets/imgs/quick/twit.png')} style={{ width: 230, height: 175, borderRadius: 10, marginLeft: 20 }}
+                        />
+                    </Pressable>
+                    <Pressable style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1 }]} onPress={handleWebsite}>
+                        <Image source={require('../assets/imgs/quick/web.png')} style={{ width: 230, height: 175, borderRadius: 10, marginLeft: 20 }}
                         />
                     </Pressable>
                     <View style={{ width: 50, height: 175, borderRadius: 10, marginLeft: 20 }} />
