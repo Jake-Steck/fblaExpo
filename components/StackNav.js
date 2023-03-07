@@ -13,6 +13,7 @@ import BottomNav from './BottomBar';
 import ViewAttendance from '../screens/ViewAttendance';
 import PhotoShare from '../screens/PhotoShare';
 import Profile from '../screens/ProfileS';
+import ViewPhotos from '../screens/ViewPhotos';
 
 const Stack = createStackNavigator();
 
@@ -29,8 +30,9 @@ export default function StackNav() {
             <Stack.Screen name="StudentProf" component={ProfileS} options={{ headerShown: false }} />
             <Stack.Screen name="TeacherProf" component={ProfileT} options={{ headerShown: false }} />
             <Stack.Screen name="ViewAttendance" component={ViewAttendance} options={{ headerShown: false }} />
-            <Stack.Screen name = "PhotoShare" component={PhotoShare} options={{ headerShown: false }} />
+            <Stack.Screen name="PhotoShare" component={PhotoShare} options={{ headerShown: false }} />
             <Stack.Screen name="ProfileS" component={Profile} options={{ headerShown: false }} />
+            <Stack.Screen name="ViewPhotos" component={ViewPhotos} options={{ headerShown: false }} />
         </Stack.Navigator>
     );
 }

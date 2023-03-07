@@ -37,7 +37,7 @@ export default function QuickActions() {
 
             <Text style={{ left: 40, fontFamily: 'OpenSans_700Bold', marginTop: '10%', fontSize: 25, color: "#3D3D3D" }}>Quick Actions</Text>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ paddingTop: 7, paddingLeft: 40 }} snapToInterval={250} decelerationRate={0}>
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ paddingTop: 7, paddingLeft: 40 }} snapToInterval={200} decelerationRate={0}>
                     <Pressable style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1 }]} onPress={openMaps}>
                         <Image source={require('../assets/imgs/quick/direct.png')} style={{ width: 230, height: 175, borderRadius: 10 }}
                         />
@@ -54,6 +54,7 @@ export default function QuickActions() {
                         <Image source={require('../assets/imgs/quick/share.png')} style={{ width: 230, height: 175, borderRadius: 10, marginLeft: 20 }}
                         />
                     </Pressable>
+                    <View style={{ width: 50, height: 175, borderRadius: 10, marginLeft: 20 }} />
                 </ScrollView >
             </View>
         </>
