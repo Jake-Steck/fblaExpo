@@ -25,10 +25,11 @@ Get fireBase api key from https://console.firebase.google.com/u/0/ (SDK v9)
 2. Open the command prompt (Windows) or terminal (MacOs). 
 3. Direct to the forked folder with the "cd" command
 4. Replace "API_KEY" and others with respective keys from SDK v9 https://console.firebase.google.com/u/0/ 
-4. run " npx expo start " to start a server on your local computer
-5. If you are on MacOs, you can press "i" to open a simulated iPhone with the app installed on it
-6. Install "Expo Go" app from the app store or google play store
-7. Scan QR code shown in terminal and open in Expo Go
+5. Run "npm install" in terminal to download required packages
+6. run " npx expo start " to start a server on your local computer
+7. If you are on MacOs, you can press "i" to open a simulated iPhone with the app installed on it
+8. Install "Expo Go" app from the app store or google play store
+9. Scan QR code shown in terminal and open in Expo Go
 
  * Will only work if you are on the same network as the server and server is open *
 
