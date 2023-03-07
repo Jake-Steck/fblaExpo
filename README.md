@@ -12,6 +12,7 @@ The Livingston High School Mobile App provides easy access to school necessities
 - Convenient access to real-time weather information for Livingston, NJ.
 - Bug reporting system
 - Quick links to the schools Twitter page and website
+- Made with React Native JS and Expo
 
 ## License
 
