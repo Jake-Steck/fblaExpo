@@ -36,6 +36,10 @@ export default function Profile() {
         Linking.openURL('https://students.livingston.org/');
     }
 
+    const handlePhoto = () => {
+        navigation.push("PhotoShare");
+    }
+
     const [temp, setTemp] = useState();
     var key = "f908c935c047b03ebb81e5e19bb32147";
     var zip = "07039";
@@ -91,7 +95,7 @@ export default function Profile() {
                 <View style={{ borderWidth: 1, borderColor: 'lightgrey', bottom: 15, }} />
 
                 <View>
-                    <Pressable style={({ pressed }) => [
+                    <Pressable onPress={handlePhoto} style={({ pressed }) => [
                         {
                             opacity: pressed ? 0.5 : 1
                         }

@@ -12,13 +12,13 @@ import { useNavigation } from '@react-navigation/core';
 import PhotoShare from './PhotoShare';
 import StackNav from '../components/StackNav';
 
-export default function Profile({ navigation }) {
+export default function Profile() {
 
+    const navigation = useNavigation();
     let SignOut = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
             console.log("Sign-out successful.")
-            navigation.navigate("SignIn")
         }).catch((error) => {
             // An error happened.
             console.log(error)
@@ -31,6 +31,10 @@ export default function Profile({ navigation }) {
 
     const handleGenesis = () => {
         Linking.openURL('https://students.livingston.org/');
+    }
+
+    const handlePhoto = () => {
+        navigation.push("PhotoShare");
     }
 
     const [temp, setTemp] = useState();
@@ -87,7 +91,7 @@ export default function Profile({ navigation }) {
                 <View style={{ borderWidth: 1, borderColor: 'lightgrey', bottom: 15, }} />
 
                 <View>
-                    <Pressable onPress={() => navigation.navigate("PhotoShare")} style={({ pressed }) => [
+                    <Pressable onPress={handlePhoto} style={({ pressed }) => [
                         {
                             opacity: pressed ? 0.5 : 1
                         }
