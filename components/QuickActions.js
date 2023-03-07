@@ -8,12 +8,19 @@ import { Link, useNavigation } from '@react-navigation/native';
 import { SchoolDirections } from './SchoolDirectionsModal';
 import { Linking } from 'react-native';
 import PhotoShare from '../screens/PhotoShare';
+import ReportBug from '../screens/ReportBug';
 
 export default function QuickActions() {
 
     const navigation = useNavigation();
 
-    const [SchoolDirections, setModalVisibleMap] = useState(false);
+    const [modalVisible1, setModalVisible1] = useState(false);
+
+    const closeModal1 = () => {
+        setModalVisible1(false);
+    }
+
+
 
 
 
@@ -70,9 +77,24 @@ export default function QuickActions() {
                         <Image source={require('../assets/imgs/quick/web.png')} style={{ width: 230, height: 175, borderRadius: 10, marginLeft: 20 }}
                         />
                     </Pressable>
+                    <Pressable style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1 }]} onPress={() => setModalVisible1(true)}>
+                        <Image source={require('../assets/imgs/quick/bug.png')} style={{ width: 230, height: 175, borderRadius: 10, marginLeft: 20 }}
+                        />
+                    </Pressable>
                     <View style={{ width: 50, height: 175, borderRadius: 10, marginLeft: 20 }} />
                 </ScrollView >
             </View>
+
+            <Modal
+                animationType="slide"
+                presentationStyle='pageSheet'
+                visible={modalVisible1}
+                onRequestClose={() => {
+                    setModalVisible1(!modalVisible1);
+                }}>
+                <ReportBug closeModal={closeModal1} setModalVisible={setModalVisible1} />
+
+            </Modal>
         </>
     )
 }
